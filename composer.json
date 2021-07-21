@@ -1,0 +1,21 @@
+{
+    "name": "suzuken/ion-php",
+    "description": "Unofficial Ion Implementation",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "suzuken",
+            "email": "suzuken326@gmail.com"
+        }
+    ],
+    "require": {
+      "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": { "Suzuken\\Ion\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    }
+}
