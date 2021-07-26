@@ -81,9 +81,9 @@ class SharedSymbolTable extends SymbolTable
         return new SymbolToken($text, $id, nil);
     }
 
-    public function findByName(string $symbol): ?int
+    public function findByName(string $s): ?int
     {
-        return $this->index[$symbol] ?? null;
+        return $this->index[$s] ?? null;
     }
 
     public function findById(int $id): ?string

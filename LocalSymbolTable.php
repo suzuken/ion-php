@@ -109,7 +109,7 @@ class LocalSymbolTable extends SymbolTable
             return null;
         }
         if ($id <= $this->maxImportId) {
-            return $this->findByIdInImports();
+            return $this->findByIdInImports($id);
         }
 
         // local to this symbol table.
@@ -120,8 +120,16 @@ class LocalSymbolTable extends SymbolTable
         return '';
     }
 
-    private function findByIdInImports(): ?string
+    private function findByIdInImports(int $id): ?string
     {
+        $off = 0;
+        for ($i = 1; $i < count($this->imports); $i++) {
+            if ($id <= $this->offsets[$i]) {
+                break;
+            }
+            $off = $this->offsets[$i];
+        }
+        return $this->imports[$i-1]->findById($id - $off);
     }
 
     public function imports(): ?array

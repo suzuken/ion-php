@@ -15,6 +15,7 @@ abstract class SymbolTable
     abstract public function find(string $s): ?SymbolToken;
     abstract public function findByName(string $s): ?int;
     abstract public function findById(int $id): ?string;
+    abstract public function getMaxId(): int;
 }
 
 class ImportSource
