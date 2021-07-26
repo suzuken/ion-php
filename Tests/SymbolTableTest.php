@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
+use Ion\LocalSymbolTable;
 use Ion\SharedSymbolTable;
 use PHPUnit\Framework\TestCase;
 
-class SharedSymbolTableTest extends TestCase
+class SymbolTableTest extends TestCase
 {
-    public function testName()
+    public function testSharedSymbolTable()
     {
         $st = new SharedSymbolTable('test', 2, [
             'abc',
@@ -27,6 +28,12 @@ class SharedSymbolTableTest extends TestCase
         $this->testFindByID($st, 2, 'def');
         $this->testFindByID($st, 4, 'ghi');
         $this->testFindByID($st, 100, null);
+    }
+
+    public function testLocalSymbolTable()
+    {
+        $lt = new LocalSymbolTable([], ['foo', 'bar']);
+        $this->assertSame(11, $lt->getMaxId());
     }
 
     private function testFindByName(SharedSymbolTable $table, string $name, int $index)

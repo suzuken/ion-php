@@ -4,8 +4,17 @@ declare(strict_types=1);
 
 namespace Ion;
 
-interface SymbolTable
+abstract class SymbolTable
 {
+    private const SymbolIdUnknown = -1;
+
+    /**
+     * @return SharedSymbolTable[]|null
+     */
+    abstract public function imports(): ?array;
+    abstract public function find(string $s): ?SymbolToken;
+    abstract public function findByName(string $s): ?int;
+    abstract public function findById(int $id): ?string;
 }
 
 class ImportSource

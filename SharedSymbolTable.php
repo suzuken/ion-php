@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ion;
 
-class SharedSymbolTable
+class SharedSymbolTable extends SymbolTable
 {
     private string $name;
     private int $version;
@@ -89,5 +89,26 @@ class SharedSymbolTable
     public function findById(int $id): ?string
     {
         return $this->symbols[$id - 1] ?? null;
+    }
+
+    // refs https://amzn.github.io/ion-docs/docs/symbols.html#system-symbols
+    public static function v1(): SharedSymbolTable
+    {
+        return new SharedSymbolTable('$ion', 1, [
+            '$ion',
+            '$ion_1_0',
+            '$ion_symbol_table',
+            'name',
+            'version',
+            'imports',
+            'symbols',
+            'max_id',
+            '$ion_shared_symbol_table',
+        ]);
+    }
+
+    public function imports(): ?array
+    {
+        return null;
     }
 }
