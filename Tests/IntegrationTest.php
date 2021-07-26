@@ -17,10 +17,16 @@ class IntegrationTest extends TestCase
      * @var string[]
      */
     private array $badCases;
+    private array $goodCases;
+    private array $goodEquivsCases;
+    private array $goodNonEquivsCases;
 
     protected function setUp(): void
     {
         $this->badCases = $this->files($this->dir . 'bad');
+        $this->goodCases = $this->files($this->dir . 'good');
+        $this->goodEquivsCases = $this->files($this->dir . 'good/equivs');
+        $this->goodNonEquivsCases = $this->files($this->dir . 'good/non-equivs');
     }
 
     private function endWith(string $haystack, string $needle): bool
@@ -56,6 +62,15 @@ class IntegrationTest extends TestCase
         foreach($this->badCases as $filename) {
             $tmp = file_get_contents($filename);
             $this->expectException(\Ion\ParserException::class);
+            $ion->load($tmp);
+        }
+    }
+
+    public function testGood()
+    {
+        $ion = new Ion();
+        foreach($this->goodCases as $filename) {
+            $tmp = file_get_contents($filename);
             $ion->load($tmp);
         }
     }
