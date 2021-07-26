@@ -2,6 +2,6 @@
 
 namespace Ion;
 
-class ParserException
+class ParserException extends \Exception implements \Throwable
 {
 }
