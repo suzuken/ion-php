@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Ion;
 
+const SymbolIdUnknown = 1;
+
 abstract class SymbolTable
 {
-    private const SymbolIdUnknown = -1;
-
     /**
      * @return SharedSymbolTable[]|null
      */
@@ -22,18 +22,9 @@ class ImportSource
 {
     public string $table;
     public int $sid;
-}
 
-class SymbolToken
-{
-    public ?string $text;
-    public int $localSID;
-    public ?ImportSource $importSource;
-
-    public function __construct(?string $text, int $localSID, ?ImportSource $importSource)
+    public function equal(ImportSource $o): bool
     {
-        $this->text = $text;
-        $this->localSID = $localSID;
-        $this->importSource = $importSource;
+        return $this->table === $o->table && $this->sid === $o->sid;
     }
 }

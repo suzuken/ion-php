@@ -78,7 +78,7 @@ class SharedSymbolTable extends SymbolTable
         if ($text === null) {
             return null;
         }
-        return new SymbolToken($text, $id, nil);
+        return new SymbolToken($text, $id, null);
     }
 
     public function findByName(string $s): ?int

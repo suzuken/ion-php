@@ -86,7 +86,7 @@ class LocalSymbolTable extends SymbolTable
         }
 
         if (isset($this->index[$s])) {
-            return new SymbolToken($s, self::SymbolIdUnknown, null);
+            return new SymbolToken($s, SymbolIdUnknown, null);
         }
         return null;
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Ion\LocalSymbolTable;
 use Ion\SharedSymbolTable;
 use Ion\SymbolTable;
+use Ion\SymbolToken;
 use PHPUnit\Framework\TestCase;
 
 class SymbolTableTest extends TestCase
@@ -30,6 +31,8 @@ class SymbolTableTest extends TestCase
         $this->testFindByID($st, 2, 'def');
         $this->testFindByID($st, 4, 'ghi');
         $this->testFindByID($st, 100, null);
+
+        $this->testFindSymbolToken($st, 'def', SymbolToken::createFromString('def'));
     }
 
     public function testLocalSymbolTable()
@@ -47,6 +50,10 @@ class SymbolTableTest extends TestCase
         $this->testFindByID($lt, 10, 'foo');
         $this->testFindByID($lt, 11, 'bar');
         $this->testFindByID($lt, 12, ''); // TODO to be null?
+
+        $this->testFindSymbolToken($lt, 'foo', SymbolToken::createFromString('foo'));
+        $this->testFindSymbolToken($lt, 'bar', SymbolToken::createFromString('bar'));
+        $this->testFindSymbolToken($lt, '$ion', SymbolToken::createFromString('$ion'));
     }
 
     private function testFindByName(SymbolTable $table, string $name, ?int $index)
@@ -57,5 +64,11 @@ class SymbolTableTest extends TestCase
     private function testFindByID(SymbolTable $table, int $index, ?string $name)
     {
         $this->assertSame($name, $table->findByID($index));
+    }
+
+    private function testFindSymbolToken(SymbolTable $table, string $sym, SymbolToken $expected)
+    {
+        $actual = $table->find($sym);
+        $this->assertTrue($actual->equal($expected));
     }
 }
