@@ -2,4 +2,4 @@ install:
 	composer install
 
 test:
-	phpunit
+	vendor/bin/phpunit
