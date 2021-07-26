@@ -25,4 +25,5 @@ var_dump($ionText);
 
 ## Development
 
+* This implementation is based on https://github.com/amzn/ion-go
 * Tests based on https://github.com/amzn/ion-tests

@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ion;
 
-class SharedSymbolTable extends SymbolTable
+class SharedSymbolTable
 {
     private string $name;
     private int $version;
@@ -53,7 +55,7 @@ class SharedSymbolTable extends SymbolTable
         return $this->maxId;
     }
 
-    private function buildIndex($symbols, int $offset): array
+    private function buildIndex(array $symbols, int $offset): array
     {
         $index = [];
         foreach ($symbols as $i => $sym) {
