@@ -5,12 +5,14 @@
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "suzuken",
-            "email": "suzuken326@gmail.com"
+            "name": "Kenta Suzuki"
         }
     ],
     "require": {
       "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0 || ^9.0"
     },
     "autoload": {
         "psr-4": { "Ion\\": "" },
