@@ -1,6 +1,6 @@
 <?php
 
-namespace Suzuken\Ion\Tests;
+namespace Ion\Tests;
 
 use PHPUnit\Framework\TestCase;
 

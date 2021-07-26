@@ -13,7 +13,7 @@
       "php": ">=7.4"
     },
     "autoload": {
-        "psr-4": { "Suzuken\\Ion\\": "" },
+        "psr-4": { "Ion\\": "" },
         "exclude-from-classmap": [
             "/Tests/"
         ]

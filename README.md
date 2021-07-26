@@ -6,6 +6,23 @@ WIP
 
 * PHP 7.4 or later
 
+## Examples
+
+```php
+<?php
+
+use Ion\Ion;
+
+$n = new Ion();
+$data = '{ name: "Ion" }'
+$value = $n->load($data);
+
+var_dump($value);
+
+$ionText = $n->dump($value);
+var_dump($ionText);
+```
+
 ## Development
 
 * Tests based on https://github.com/amzn/ion-tests

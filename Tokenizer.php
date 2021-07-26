@@ -1,6 +1,6 @@
 <?php
 
-namespace Suzuken\Ion;
+namespace Ion;
 
 class Tokenizer
 {
